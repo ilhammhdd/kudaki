@@ -7,3 +7,6 @@
 [submodule "gateway-service"]
 	path = gateway-service
 	url = https://github.com/ilhammhdd/kudaki-gateway-service.git
+[submodule "docker-tools"]
+	path = docker-tools
+	url = https://github.com/ilhammhdd/kudaki-docker-tools.git
