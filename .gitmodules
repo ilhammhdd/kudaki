@@ -10,3 +10,6 @@
 [submodule "docker-tools"]
 	path = docker-tools
 	url = https://github.com/ilhammhdd/kudaki-docker-tools.git
+[submodule "entities"]
+	path = entities
+	url = https://github.com/ilhammhdd/kudaki-entities.git
