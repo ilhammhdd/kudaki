@@ -13,3 +13,6 @@
 [submodule "entities"]
 	path = entities
 	url = https://github.com/ilhammhdd/kudaki-entities.git
+[submodule "kudaki-android"]
+	path = kudaki-android
+	url = https://github.com/yudantoanas/kudaki-android
