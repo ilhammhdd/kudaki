@@ -16,3 +16,6 @@
 [submodule "kudaki-android"]
 	path = kudaki-android
 	url = https://github.com/yudantoanas/kudaki-android
+[submodule "store-service"]
+	path = store-service
+	url = https://github.com/ilhammhdd/kudaki-store-service.git
