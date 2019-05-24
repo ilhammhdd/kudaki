@@ -19,3 +19,6 @@
 [submodule "store-service"]
 	path = store-service
 	url = https://github.com/ilhammhdd/kudaki-store-service.git
+[submodule "rental-service"]
+	path = rental-service
+	url = https://github.com/ilhammhdd/kudaki-rental-service.git
