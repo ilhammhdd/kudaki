@@ -22,3 +22,6 @@
 [submodule "rental-service"]
 	path = rental-service
 	url = https://github.com/ilhammhdd/kudaki-rental-service.git
+[submodule "externals"]
+	path = externals
+	url = https://github.com/ilhammhdd/kudaki-externals.git
