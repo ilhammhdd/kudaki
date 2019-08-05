@@ -1,0 +1,131 @@
+version: "3.3"
+
+services:
+  kudaki_gateway_service:
+    image: ilhammhdd/kudaki-gateway-service:latest
+    container_name: kudaki_gateway_container
+    hostname: kudaki_gateway_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_gateway_service
+
+  kudaki_order_service:
+    image: ilhammhdd/kudaki-order-service:latest
+    container_name: kudaki_order_container
+    hostname: kudaki_order_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_order_service
+
+  kudaki_user_info_service:
+    image: ilhammhdd/kudaki-user-info-service:latest
+    container_name: kudaki_user_info_container
+    hostname: kudaki_user_info_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_user_info_service
+
+  kudaki_user_auth_service:
+    image: ilhammhdd/kudaki-user-auth-service:latest
+    container_name: kudaki_user_auth_container
+    hostname: kudaki_user_auth_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_user_auth_service
+    volumes:
+      - certs:/certs
+
+  kudaki_storefront_service:
+    image: ilhammhdd/kudaki-storefront-service:latest
+    container_name: kudaki_storefront_container
+    hostname: kudaki_storefront_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_storefront_service
+
+  kudaki_item_service:
+    image: ilhammhdd/kudaki-item-service:latest
+    container_name: kudaki_item_container
+    hostname: kudaki_item_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_item_service
+
+  kudaki_item_review_service:
+    image: ilhammhdd/kudaki-item-review-service:latest
+    container_name: kudaki_item_review_container
+    hostname: kudaki_item_review_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_item_review_service
+
+  kudaki_rental_service:
+    image: ilhammhdd/kudaki-rental-service:latest
+    container_name: kudaki_rental_container
+    hostname: kudaki_rental_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_rental_service
+
+  kudaki_event_service:
+    image: ilhammhdd/kudaki-event-service:latest
+    container_name: kudaki_event_container
+    hostname: kudaki_event_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_event_service
+
+  kudaki_event_payment_service:
+    image: ilhammhdd/kudaki-event-payment-service:latest
+    container_name: kudaki_event_payment_container
+    hostname: kudaki_event_payment_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_event_payment_service
+
+  kudaki_recommendation_service:
+    image: ilhammhdd/kudaki-recommendation-service:latest
+    container_name: kudaki_recommendation_container
+    hostname: kudaki_recommendation_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_recommendation_service
+
+  kudaki_mountain_service:
+    image: ilhammhdd/kudaki-mountain-service:latest
+    container_name: kudaki_mountain_container
+    hostname: kudaki_mountain_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_mountain_service
+
+  kudaki_file_service:
+    image: ilhammhdd/kudaki-file-service:latest
+    container_name: kudaki_file_container
+    hostname: kudaki_file_host
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_file_service
+    volumes:
+      - /home/kudaki-data/files:/files
+
+networks:
+  kudaki-docker-net:
+    external: true
+volumes:
+  certs:
+    external:
+      name: certs
