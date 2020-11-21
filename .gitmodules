@@ -1,48 +1,48 @@
 [submodule "protobuf"]
 	path = protobuf
-	url = https://github.com/ilhammhdd/kudaki-protobuf.git
+	url = git@github-punyaku:ilhammhdd/kudaki-protobuf.git
 [submodule "gateway-service"]
 	path = gateway-service
-	url = https://github.com/ilhammhdd/kudaki-gateway-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-gateway-service.git
 [submodule "docker-tools"]
 	path = docker-tools
-	url = https://github.com/ilhammhdd/kudaki-docker-tools.git
+	url = git@github-punyaku:ilhammhdd/kudaki-docker-tools.git
 [submodule "kudaki-android"]
 	path = kudaki-android
 	url = https://github.com/yudantoanas/kudaki-android
 [submodule "rental-service"]
 	path = rental-service
-	url = https://github.com/ilhammhdd/kudaki-rental-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-rental-service.git
 [submodule "order-service"]
 	path = order-service
-	url = https://github.com/ilhammhdd/kudaki-order-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-order-service.git
 [submodule "user-info-service"]
 	path = user-info-service
-	url = https://github.com/ilhammhdd/kudaki-user-info-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-user-info-service.git
 [submodule "user-auth-service"]
 	path = user-auth-service
-	url = https://github.com/ilhammhdd/kudaki-user-auth-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-user-auth-service.git
 [submodule "storefront-service"]
 	path = storefront-service
-	url = https://github.com/ilhammhdd/kudaki-storefront-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-storefront-service.git
 [submodule "item-service"]
 	path = item-service
-	url = https://github.com/ilhammhdd/kudak-item-service.git
+	url = git@github-punyaku:ilhammhdd/kudak-item-service.git
 [submodule "item-review-service"]
 	path = item-review-service
-	url = https://github.com/ilhammhdd/kudaki-item-review-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-item-review-service.git
 [submodule "event-service"]
 	path = event-service
-	url = https://github.com/ilhammhdd/kudaki-event-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-event-service.git
 [submodule "event-payment-service"]
 	path = event-payment-service
-	url = https://github.com/ilhammhdd/kudaki-event-payment-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-event-payment-service.git
 [submodule "recommendation-service"]
 	path = recommendation-service
-	url = https://github.com/ilhammhdd/kudaki-recommendation-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-recommendation-service.git
 [submodule "mountain-service"]
 	path = mountain-service
-	url = https://github.com/ilhammhdd/kudaki-mountain-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-mountain-service.git
 [submodule "file-service"]
 	path = file-service
-	url = https://github.com/ilhammhdd/kudaki-file-service.git
+	url = git@github-punyaku:ilhammhdd/kudaki-file-service.git
