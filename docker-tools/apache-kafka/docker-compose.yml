@@ -1,0 +1,42 @@
+version: "3.3"
+
+services:
+  kudaki_zookeeper_service:
+    image: confluentinc/cp-zookeeper
+    container_name: kudaki_zookeeper_container
+    hostname: kudaki_zookeeper_host
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 3000
+    ports:
+      - "2181:2181"
+    restart: always
+    networks:
+      - kudaki-docker-net
+  
+  kudaki_kafka_service:
+    image: confluentinc/cp-kafka
+    container_name: kudaki_kafka_container
+    hostname: kudaki_kafka_host
+    depends_on:
+      - kudaki_zookeeper_service
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: kudaki_zookeeper_service:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kudaki_kafka_service:9092,PLAINTEXT_HOST://178.62.107.160:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "29092:29092"
+      - "9092:9092"
+    restart: always
+    networks:
+      kudaki-docker-net:
+        aliases: 
+          - kudaki_kafka_service:9092
+
+networks:
+  kudaki-docker-net:
+    external: true

@@ -1,0 +1,47 @@
+syntax = "proto3";
+package aggregates.store;
+
+import "google/protobuf/timestamp.proto";
+import "aggregates/store/storefront.proto";
+
+enum PriceDuration{
+    DAY = 0;
+    WEEK = 1;
+    MONTH = 2;
+    YEAR = 3;
+}
+
+enum UnitofMeasurement {
+    MM = 0;
+    CM = 1;
+    DM = 2;
+    M = 3;
+    DAM = 4;
+    HM = 5;
+    KM = 6;
+}
+
+message ItemDimension {
+    int32 length = 1;
+    int32 width = 2;
+    int32 height = 3;
+    UnitofMeasurement unit_of_measurement = 4;
+}
+
+message Item {
+    int64 id = 1;
+    string uuid = 2;
+    aggregates.store.Storefront storefront = 3;
+    string name = 4;
+    int32 amount = 5;
+    string unit = 6;
+    int32 price = 7;
+    PriceDuration price_duration = 8;
+    string description = 9;
+    string photo = 10;
+    double rating = 11;
+    ItemDimension item_dimension = 12;
+    string color = 13;
+    google.protobuf.Timestamp created_at = 14;
+    double total_raw_rating = 15;
+}

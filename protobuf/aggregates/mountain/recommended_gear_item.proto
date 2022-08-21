@@ -1,0 +1,14 @@
+syntax = "proto3";
+package aggregates.mountain;
+
+import "aggregates/mountain/recommended_gear.proto";
+import "google/protobuf/timestamp.proto";
+
+message RecommendedGearItem{
+    int64 id = 1;
+    string uuid = 2;
+    aggregates.mountain.RecommendedGear recommended_gear = 3;
+    string item_type = 4;
+    int32 total = 5;
+    google.protobuf.Timestamp created_at = 6;
+}

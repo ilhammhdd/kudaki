@@ -1,0 +1,86 @@
+syntax = "proto3";
+package aggregates.event;
+
+import "aggregates/user/user.proto";
+import "aggregates/kudaki_event/doku_invoice.proto";
+import "aggregates/kudaki_event/kudaki_event.proto";
+import "events/status.proto";
+
+enum EventServiceCommandTopic {
+    ADD_KUDAKI_EVENT = 0;
+    UPDATE_KUDAKI_EVENT = 1;
+    DELETE_KUDAKI_EVENT = 2;
+    RETRIEVE_KUDAKI_EVENT = 3;
+    RETRIEVE_KUDAKI_EVENTS = 4;
+    RETRIEVE_ORGANIZER_INVOICES = 5;
+}
+
+message AddKudakiEvent {
+    string uid = 1;
+    string name = 6;
+    string venue = 2;
+    string description = 3;
+    int64 duration_from = 4;
+    int64 duration_to = 5;
+    int64 ad_duration_from = 7;
+    int64 ad_duration_to = 8;
+    string kudaki_token = 9;
+}
+
+message DeleteKudakiEvent {
+    string uid = 1;
+    string event_uuid = 2;
+    string kudaki_token = 3;
+}
+
+message RetrieveOrganizerInvoices {
+    string uid = 1;
+    string kudaki_token = 2;
+    bytes result_schema = 3;
+}
+
+enum EventServiceEventTopic {
+    KUDAKI_EVENT_ADDED = 0;
+    KUDAKI_EVENT_UPDATED = 1;
+    KUDAKI_EVENT_DELETED = 2;
+    KUDAKI_EVENT_RETRIEVED = 3;
+    KUDAKI_EVENTS_RETRIEVED = 4;
+    ORGANIZER_INVOICES_RETRIEVED = 5;
+}
+
+message KudakiEventAdded {
+    string uid = 1;
+    aggregates.user.User organizer = 2;
+    .event.Status event_status = 3;
+    aggregates.kudaki_event.KudakiEvent kudaki_event = 4;
+    AddKudakiEvent add_kudaki_event = 5;
+}
+
+message KudakiEventDeleted {
+    string uid = 1;
+    aggregates.user.User organizer = 2;
+    .event.Status event_status = 3;
+    aggregates.kudaki_event.KudakiEvent kudaki_event = 4;
+    DeleteKudakiEvent delete_kudaki_event = 5;
+}
+
+message OrganizerInvoicesRetrieved {
+    string uid = 1;
+    aggregates.user.User organizer = 2;
+    .event.Status event_status = 3;
+    bytes result = 4;
+}
+
+enum EventPaymentServiceEventTopic {
+    EVENT_DOKU_INVOICE_ISSUED = 0;
+    EVENT_DOKU_PAYMENT_IDENTIFY = 1;
+    EVENT_DOKU_PAYMENT_REDIRECT = 2;
+    EVENT_DOKU_PAYMENT_NOTIFY = 3;
+}
+
+message KudakiEventDokuInvoiceIssued {
+    string uid = 1;
+    aggregates.user.User organizer = 2;
+    .event.Status event_status = 3;
+    aggregates.kudaki_event.DokuInvoice doku_invoice = 4;
+}

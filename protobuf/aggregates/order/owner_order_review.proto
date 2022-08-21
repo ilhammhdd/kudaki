@@ -1,0 +1,15 @@
+syntax = "proto3";
+package aggregates.order;
+
+import "google/protobuf/timestamp.proto";
+import "aggregates/order/owner_order.proto";
+
+message OwnerOrderReview {
+    int64 id = 1;
+    string uuid = 2;
+    string tenant_uuid = 3;
+    aggregates.order.OwnerOrder owner_order = 4;
+    double rating = 5;
+    string review = 6;
+    google.protobuf.Timestamp created_at = 7;
+}

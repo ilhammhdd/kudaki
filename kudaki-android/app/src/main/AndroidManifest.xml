@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.kudaki">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_app_logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity android:name=".TutorialActivity"/>
+        <activity
+            android:name=".renting.DetailEquipmentActivity"
+            android:parentActivityName=".renting.RentalActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".renting.RentalActivity" />
+        </activity>
+        <activity android:name=".explore.AddRecommendationItemActivity" />
+        <activity
+            android:name=".profile.etalase.AddEtalaseActivity"
+            android:label="Tambah Alat"
+            android:parentActivityName=".profile.etalase.EtalaseActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".profile.etalase.EtalaseActivity" />
+        </activity>
+        <activity
+            android:name=".transaction.OwnerDetailTransactionActivity"
+            android:label="Detil Transaksi"
+            android:parentActivityName=".transaction.OwnerTransactionActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".transaction.OwnerTransactionActivity" />
+        </activity>
+        <activity
+            android:name=".transaction.TenantDetailTransactionActivity"
+            android:label="Detil Transaksi"
+            android:parentActivityName=".transaction.TenantTransactionActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".transaction.TenantTransactionActivity" />
+        </activity>
+        <activity
+            android:name=".explore.RecommendationActivity"
+            android:label="Lihat Rekomendasi Alat"
+            android:parentActivityName=".explore.MountainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".explore.MountainActivity" />
+        </activity>
+        <activity
+            android:name=".transaction.OwnerTransactionActivity"
+            android:label="Lihat Transaksi"
+            android:launchMode="singleTop"
+            android:parentActivityName=".profile.ProfileActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".profile.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".profile.etalase.EditEtalaseActivity"
+            android:label="Etalase"
+            android:parentActivityName=".profile.etalase.EtalaseActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".profile.etalase.EtalaseActivity" />
+        </activity>
+        <activity
+            android:name=".profile.etalase.EtalaseActivity"
+            android:label="Etalase"
+            android:parentActivityName=".profile.ProfileActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".profile.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".profile.EditPasswordActivity"
+            android:label="Ubah Password"
+            android:parentActivityName=".setting.SettingActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".setting.SettingActivity" />
+        </activity>
+        <activity
+            android:name=".transaction.TenantTransactionActivity"
+            android:label="Lihat Transaksi"
+            android:launchMode="singleTop"
+            android:parentActivityName=".profile.ProfileActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".profile.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".profile.EditProfileActivity"
+            android:label="Ubah Profil"
+            android:parentActivityName=".setting.SettingActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".setting.SettingActivity" />
+        </activity>
+        <activity
+            android:name=".renting.RentalActivity"
+            android:label="Cari Alat"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:label="Profil"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".explore.ExploreActivity"
+            android:label="Jelajah"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".event.EventActivity"
+            android:label="Acara"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".explore.MountainActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".explore.ExploreActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".explore.ExploreActivity" />
+        </activity>
+        <activity
+            android:name=".reset.ResetActivity"
+            android:parentActivityName=".login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="gateway.kudaki.id"
+                    android:pathPrefix="/user/password/reset"
+                    android:scheme="https" />
+            </intent-filter>
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".login.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".setting.SettingActivity"
+            android:label="Pengaturan"
+            android:parentActivityName=".profile.ProfileActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".profile.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".cart.CartActivity"
+            android:parentActivityName=".renting.RentalActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".renting.RentalActivity" />
+        </activity>
+        <activity
+            android:name=".SearchableActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".forgotpwd.ForgotPwdActivity"
+            android:parentActivityName=".login.LoginActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".login.LoginActivity" />
+        </activity>
+        <activity android:name=".MainActivity">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:launchMode="singleTop"
+                android:value=".SearchableActivity" />
+        </activity>
+        <activity android:name=".login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="gateway.kudaki.id"
+                    android:pathPrefix="/user/verify"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".register.RegisterActivity"
+            android:parentActivityName=".login.LoginActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".login.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

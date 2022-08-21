@@ -1,0 +1,29 @@
+syntax = "proto3";
+package aggregates.user;
+
+import "google/protobuf/timestamp.proto";
+
+enum UserRole{
+    ADMIN = 0;
+    USER = 1;
+    KUDAKI_TEAM = 2;
+    ORGANIZER = 3;
+}
+
+enum AccountType{
+    NATIVE = 0;
+    GOOGLE = 1;
+    FACEBOOK = 2;
+}
+
+message User {
+    int64 id = 1;
+    string uuid = 2;
+    string email = 3;
+    string password = 4;
+    string token = 5;
+    UserRole role = 6;
+    string phone_number = 7;
+    AccountType account_type = 8;
+    google.protobuf.Timestamp created_at = 9;
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+package aggregates.kudaki_event;
+
+import "google/protobuf/timestamp.proto";
+
+enum KudakiEventStatus {
+    UNPUBLISHED = 0;
+    PUBLISHED = 1;
+    TAKEN_DOWN = 2;
+}
+
+message KudakiEvent {
+    int64 id = 1;
+    string uuid = 2;
+    string organizer_user_uuid = 3;
+    string name = 4;
+    double latitude = 5;
+    double longitude = 6;
+    string venue = 7; 
+    string description = 8;
+    google.protobuf.Timestamp duration_from = 9;
+    google.protobuf.Timestamp duration_to = 10;
+    google.protobuf.Timestamp ad_duration_from = 11;
+    google.protobuf.Timestamp ad_duration_to = 12;
+    int32 seen = 13;
+    KudakiEventStatus status = 14;
+    google.protobuf.Timestamp created_at = 15;
+}

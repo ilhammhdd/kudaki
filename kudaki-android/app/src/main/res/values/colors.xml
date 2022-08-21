@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="kudakiPrimary">#0184C3</color>
+    <color name="kudakiPrimaryDark">#0B4A6B</color>
+    <color name="kudakiAccentWhite">#FFFFFF</color>
+    <color name="kudakiOutlineRed">#D00000</color>
+    <color name="kudakiOutlineYellow">#F3B106</color>
+    <color name="kudakiOutlineGreen">#28B446</color>
+    <color name="kudakiDividerGray">#9D9D9D</color>
+</resources>

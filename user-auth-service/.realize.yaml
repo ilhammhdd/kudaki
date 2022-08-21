@@ -1,0 +1,52 @@
+settings:
+  recovery:
+    index: true
+    events: false
+    tools: false
+  legacy:
+    force: false
+    interval: 0ms
+schema:
+- name: kudaki-user-auth-service
+  path: .
+  commands:
+    clean:
+      status: true
+    run:
+      status: true
+  args:
+    - -- KAFKA_BROKERS 178.62.107.160:29092
+    - -- QUERY_DB_PATH tcp(178.62.107.160:3307)
+    - -- QUERY_DB_USERNAME root
+    - -- QUERY_DB_PASSWORD mysqlreplicarocks
+    - -- QUERY_DB_NAME kudaki_user
+    - -- DB_PATH tcp(178.62.107.160:3306)
+    - -- DB_USERNAME kudaki_user_repo
+    - -- DB_PASSWORD kudakiuserreporocks
+    - -- DB_NAME kudaki_user
+    - -- MAIL kudaki.service@gmail.com
+    - -- MAIL_PASSWORD OlahragaOtak2K19!
+    - -- MAIL_HOST smtp.gmail.com
+    - -- MAIL_PORT 587
+    - -- VERIFICATION_PRIVATE_KEY ./verification_private.pem
+    - -- VERIFICATION_PUBLIC_KEY ./verification_public.pem
+    - -- GATEWAY_HOST localhost:9001
+    - -- GRPC_PORT 9099
+    - -- KAFKA_VERSION 2.1.1
+    - -- RESET_PASSWORD_PRIVATE_KEY ./reset_password_private.pem
+    - -- RESET_PASSWORD_PUBLIC_KEY ./reset_password_public.pem
+    - -- REDISEARCH_SERVER 178.62.107.160:6379
+    - -- USER_REPO_SERVICE_GRPC_ADDRESS localhost:9100
+  watcher:
+    extensions:
+    - go
+    paths:
+    - /
+    ignored_paths: 
+    - .git
+    - .realize
+    - vendor
+    - .vendor-new
+    scripts:
+    - type: before
+      command: taskkill /IM "kudaki-user-auth-service.exe" /F

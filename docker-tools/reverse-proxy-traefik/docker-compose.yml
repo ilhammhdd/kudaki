@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+  traefik_service:
+    image: traefik
+    container_name: traefik_container
+    command: --docker --logLevel=ERROR
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - kudaki-docker-net
+    volumes:
+      - ./traefik.toml:/traefik.toml
+      - ./rules.toml:/rules.toml
+      - /var/run/docker.sock:/var/run/docker.sock
+      - certs:/certs
+    restart: on-failure
+
+networks:
+  kudaki-docker-net:
+    external: true
+
+volumes:
+  certs:
+    external:
+      name: certs

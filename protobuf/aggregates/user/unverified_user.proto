@@ -1,0 +1,11 @@
+syntax = "proto3";
+package aggregates.user;
+
+import "aggregates/user/user.proto";
+import "google/protobuf/timestamp.proto";
+
+message UnverifiedUser {
+    int64 id = 1;
+    aggregates.user.User user = 2;
+    google.protobuf.Timestamp created_at = 3;
+}

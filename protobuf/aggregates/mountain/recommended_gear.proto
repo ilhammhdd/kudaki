@@ -1,0 +1,16 @@
+syntax = "proto3";
+package aggregates.mountain;
+
+import "aggregates/mountain/mountain.proto";
+import "google/protobuf/timestamp.proto";
+
+message RecommendedGear {
+    int64 id = 1;
+    string uuid = 2;
+    string user_uuid = 3;
+    aggregates.mountain.Mountain mountain = 4;
+    int32 upvote = 5;
+    int32 downvote = 6;
+    int32 seen = 7;
+    google.protobuf.Timestamp created_at = 8;
+}

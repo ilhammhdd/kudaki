@@ -1,0 +1,14 @@
+syntax = "proto3";
+package aggregates.rental;
+
+import "google/protobuf/timestamp.proto";
+
+message Cart {
+    int64 id = 1;
+    string uuid = 2;
+    string user_uuid = 3;
+    int32 total_price = 4;
+    int32 total_items = 5;
+    bool open = 6;
+    google.protobuf.Timestamp created_at = 8;
+}

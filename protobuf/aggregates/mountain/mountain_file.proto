@@ -1,0 +1,12 @@
+syntax = "proto3";
+package aggregates.mountain;
+
+import "aggregates/mountain/mountain.proto";
+import "google/protobuf/timestamp.proto";
+
+message MountainFile {
+    int64 id = 1;
+    aggregates.mountain.Mountain mountain = 2;
+    string file_path = 3;
+    google.protobuf.Timestamp created_at = 4;
+}

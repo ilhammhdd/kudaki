@@ -1,0 +1,14 @@
+syntax = "proto3";
+package aggregates.store;
+
+import "google/protobuf/timestamp.proto";
+import "aggregates/store/item_review.proto";
+
+message ReviewComment {
+    int64 id = 1;
+    string uuid = 2;
+    aggregates.store.ItemReview item_review = 3;
+    string user_uuid = 4;
+    string comment = 5;
+    google.protobuf.Timestamp created_at = 6;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+package aggregates.order;
+
+import "google/protobuf/timestamp.proto";
+import "aggregates/order/order.proto";
+
+message OwnerOrder {
+    int64 id = 1;
+    string uuid = 2;
+    aggregates.order.Order order = 3;
+    string owner_uuid = 4;
+    int32 total_price = 5;
+    int64 total_quantity = 6;
+    google.protobuf.Timestamp created_at = 7;
+    aggregates.order.OrderStatus order_status = 8;
+}

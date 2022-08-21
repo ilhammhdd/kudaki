@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Kudaki</string>
+
+    <!-- FB API Creds -->
+    <string name="facebook_app_id">2637421442940973</string>
+    <string name="fb_login_protocol_scheme">fb2637421442940973</string>
+
+    <!-- Menu Title -->
+    <string name="home_ID">Beranda</string>
+    <string name="event_ID">Acara</string>
+    <string name="explore_ID">Jelajah</string>
+    <string name="renting_ID">Menyewa</string>
+    <string name="profile_ID">Profil</string>
+
+    <!-- Search -->
+    <string name="searchable_hint">Search</string>
+    <string name="LoginTitle_ID">Masuk</string>
+
+    <string-array name="duration_array">
+        <item>Harian</item>
+        <item>Mingguan</item>
+        <item>Bulanan</item>
+        <item>Tahunan</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,160 @@
+syntax = "proto3";
+package event;
+
+import "aggregates/order/order.proto";
+import "events/status.proto";
+import "aggregates/user/user.proto";
+import "aggregates/order/owner_order.proto";
+import "aggregates/order/owner_order_review.proto";
+
+/* 
+  order service commands
+*/
+enum OrderServiceCommandTopic {
+    RETRIEVE_OWNERS_ORDER_HISTORIES = 0;
+    RETRIEVE_TENANTS_ORDER_HISTORIES = 1;
+    TENANT_REVIEW_OWNER_ORDER = 2;
+    APPROVE_OWNER_ORDER = 5;
+    DISAPPROVE_OWNER_ORDER = 6;
+    CHECK_OUT = 7;
+    OWNER_CONFIRM_RETURNMENT = 8;
+  }
+
+message RetrieveOwnersOrderHistories {
+    string uid = 1;
+    string kudaki_token = 2;
+    int32 offset = 3;
+    int32 limit = 4;
+    aggregates.order.OrderStatus order_status = 5;
+    bytes result_schema = 6;
+}
+
+message RetrieveTenantsOrderHistories {
+    string uid = 1;
+    string kudaki_token = 2;
+    int32 offset = 3;
+    int32 limit = 4;
+    aggregates.order.OrderStatus order_status = 5;
+    bytes result_schema = 6;
+}
+
+message ApproveOwnerOrder {
+    string uid = 1;
+    string kudaki_token = 2;
+    string owner_order_uuid = 3;
+}
+
+message DisapproveOwnerOrder {
+    string uid = 1;
+    string kudaki_token = 2;
+    string owner_order_uuid = 3;
+}
+
+message CheckOut {
+    string uid = 1;
+    string kudaki_token = 2;
+    string cart_uuid = 3;
+    // string address_uuid = 4;
+}
+
+message OwnerConfirmReturnment {
+    string uid = 1;
+    string kudaki_token = 2; // owner user uuid derived from here
+    string owner_order_uuid = 3;
+}
+
+message TenantReviewOwnerOrder {
+    string uid = 1;
+    string kudaki_token = 2;
+    string owner_order_uuid = 3;
+    double rating = 4;
+    string review = 5;
+}
+
+/* 
+  order service events
+*/
+enum OrderServiceEventTopic {
+    OWNERS_ORDER_HISTORIES_RETRIEVED = 0;
+    TENANTS_ORDER_HISTORIES_RETRIEVED = 1;
+    TENANT_REVIEWED_OWNER_ORDER = 2;
+    OWNER_ORDER_APPROVED = 5;
+    OWNER_ORDER_DISAPPROVED = 6;
+    CHECKED_OUT = 7;
+    ORDER_APPROVED = 8;
+    ORDER_DISAPPROVED = 9;
+    OWNER_CONFIRMED_RETURNMENT = 10;
+  }
+
+message OwnersOrderHistoriesRetrieved{
+    string uid = 1;
+    event.Status event_status = 2;
+    RetrieveOwnersOrderHistories retrieve_owners_order_histories = 3;
+    bytes result = 4;
+    aggregates.user.User owner = 5;
+}
+
+message TenantOrderHistoriesRetrieved{
+    string uid = 1;
+    aggregates.user.User tenant = 2;
+    event.Status event_status = 3;
+    RetrieveTenantsOrderHistories retrieve_tenants_order_histories = 5;
+    bytes result = 4;
+}
+
+message OwnerOrderApproved {
+    string uid = 1;
+    aggregates.user.User owner = 2;
+    event.Status event_status = 3;
+    aggregates.order.OwnerOrder owner_order = 4;
+    ApproveOwnerOrder approve_owner_order = 5;
+}
+
+message OwnerOrderDisapproved {
+    string uid = 1;
+    aggregates.user.User owner = 2;
+    event.Status event_status = 3;
+    aggregates.order.OwnerOrder owner_order = 4;
+    DisapproveOwnerOrder disapprove_owner_order = 5;
+}
+
+message CheckedOut {
+    string uid = 1;
+    aggregates.user.User tenant = 2;
+    event.Status event_status = 3;
+    CheckOut check_out = 4;
+    aggregates.order.Order order = 5;
+    repeated aggregates.order.OwnerOrder owner_orders = 6;
+}
+
+message OrderApproved {
+    string uid = 1;
+    aggregates.user.User tenant = 2;
+    event.Status event_status = 3;
+    repeated aggregates.order.OwnerOrder owner_orders = 4;
+    aggregates.order.Order order = 5;
+}
+
+message OrderDisapproved {
+    string uid = 1;
+    aggregates.user.User tenant = 2;
+    event.Status event_status = 3;
+    repeated aggregates.order.OwnerOrder owner_orders = 4;
+    aggregates.order.Order order = 5;
+}
+
+message OwnerConfirmedReturnment {
+    string uid = 1;
+    aggregates.user.User owner = 2;
+    event.Status event_status = 3;
+    aggregates.order.OwnerOrder owner_order = 4;
+    OwnerConfirmReturnment owner_confirm_returnment = 5;
+}
+
+message TenantReviewedOwnerOrder {
+    string uid = 1;
+    aggregates.user.User tenant = 2;
+    event.Status event_status = 3;
+    TenantReviewOwnerOrder tenant_review_owner_order = 4;
+    aggregates.order.OwnerOrderReview owner_order_review = 5;   
+}

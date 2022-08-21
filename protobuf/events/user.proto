@@ -1,0 +1,227 @@
+syntax = "proto3";
+package event;
+
+import "events/status.proto";
+import "aggregates/user/user.proto";
+import "aggregates/user/profile.proto";
+import "aggregates/user/address.proto";
+
+/* 
+  user auth service commands
+*/
+enum UserAuthServiceCommandTopic {
+  SIGN_UP = 0;
+  VERIFY_USER = 1;
+  LOGIN = 2;
+  CHANGE_PASSWORD = 3;
+  SEND_RESET_PASSWORD_EMAIL = 4;
+  RESET_PASSWORD = 5;
+}
+
+message Signup {
+  string uid = 1;
+  string full_name = 2;
+  string phone_number = 3;
+  string email = 4;
+  string password = 5;
+  string role = 6;
+  string photo = 7;
+}
+
+message VerifyUser {
+  string uid = 1;
+  string verify_token = 2;
+}
+
+message Login {
+  string uid = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message ChangePassword{
+  string uid = 1;
+  string kudaki_token = 2;
+  string new_password = 3;
+  string old_password = 4;
+}
+
+message SendResetPasswordEmail {
+  string uid = 1;
+  string email = 2;
+}
+
+message ResetPassword {
+  string uid = 1;
+  string reset_token = 2;
+  string new_password = 3;
+}
+
+/* 
+  user auth service events
+*/
+enum UserAuthServiceEventTopic {
+  SIGNED_UP = 0;
+  USER_VERIFIED = 1;
+  LOGGEDIN = 2;
+  PASSWORD_CHANGED = 3;
+  RESET_PASSWORD_EMAIL_SENT = 4;
+  PASSWORD_RESETED = 5;
+  USER_VERIFICATION_EMAIL_SENT = 6;
+}
+
+message Signedup {
+  string uid = 1;
+  event.Status event_status = 2;
+  aggregates.user.Profile profile = 3;
+  Signup signup = 4;
+}
+
+message UserVerified {
+  string uid = 1;
+  event.Status event_status = 2;
+  aggregates.user.User user = 3;
+  VerifyUser verify_user = 4;
+}
+
+message Loggedin {
+  string uid = 1;
+  event.Status event_status = 2;
+  aggregates.user.User user = 3;
+  Login login = 4;
+}
+
+message PasswordChanged {
+  string uid = 1;
+  event.Status event_status = 2;
+  aggregates.user.User user = 3;
+  ChangePassword change_password = 4;
+}
+
+message ResetPasswordEmailSent {
+  string uid = 1;
+  aggregates.user.User user = 2;
+  string rest_token = 3;
+  event.Status event_status = 4;
+  SendResetPasswordEmail sendReset_password_email = 5;
+}
+
+message PasswordReseted {
+  string uid = 1;
+  aggregates.user.User user = 2;
+  event.Status event_status = 3;
+  ResetPassword reset_password = 4;
+}
+
+message UserVerificationEmailSent {
+  string uid = 1;
+  event.Status event_status = 2;
+  aggregates.user.User user = 3;
+  string verify_token = 4;
+}
+
+/* 
+  user info service commands
+*/
+enum UserInfoServiceCommandTopic {
+  ADD_ADDRESS = 0;
+  UPDATE_ADDRESS = 1;
+  UPDATE_PROFILE = 2;
+  RETRIEVE_ADDRESSES = 3;
+  RETRIEVE_PROFILE = 4;
+}
+
+message AddAddress {
+  string uid = 1;
+  string kudaki_token = 2;
+  string receiver_name = 3;
+  string full_address = 4;
+  string receiver_phone_number = 5;
+  float latitude = 6;
+  float longitude = 7;
+  string zip_code = 8;
+}
+
+message UpdateAddress {
+  string uid = 1;
+  string kudaki_token = 2;
+  string full_address = 3;
+  string receiver_name = 4;
+  string receiver_phone_number = 5;
+  string zip_code = 6;
+  float latitude = 7;
+  float longitude = 8;
+  string address_uuid = 9;
+}
+
+message UpdateProfile {
+  string uid = 1;
+  string photo = 2;
+  string full_name = 3;
+  string kudaki_token = 4;
+  string phone_number = 5;
+}
+
+message RetrieveAddresses {
+  string uid = 1;
+  string kudaki_token = 2;
+  bytes result_schema = 3;
+}
+
+message RetrieveProfile {
+  string uid = 1;
+  string kudaki_token = 2;
+  bytes result_schema = 3;
+}
+
+/* 
+  user info service events
+*/
+enum UserInfoServiceEventTopic {
+  ADDRESS_ADDED = 0;
+  ADDRESS_UPDATED = 1;
+  PROFILE_UPDATED = 2;
+  ADDRESSES_RETRIEVED = 3;
+  PROFILE_RETRIEVED = 4;
+}
+
+message AddressAdded {
+  string uid = 1;
+  aggregates.user.User user = 2;
+  event.Status event_status = 3;
+  aggregates.user.Address users_address = 5;
+}
+
+message AddressUpdated {
+  string uid = 1;
+  aggregates.user.User user = 2;
+  event.Status event_status = 3;
+  aggregates.user.Address address_before = 4;
+  aggregates.user.Address address_after = 5;
+  UpdateAddress update_address = 6;
+}
+
+message ProfileUpdated {
+  string uid = 1;
+  aggregates.user.User user = 2;
+  event.Status event_status = 3;
+  aggregates.user.Profile profile_before = 4;
+  aggregates.user.Profile profile_after = 5;
+  UpdateProfile update_profile = 6;
+}
+
+message AddressesRetrieved {
+  string uid = 1;
+  aggregates.user.User user = 2;
+  event.Status event_status = 3;
+  bytes result = 4;
+  repeated aggregates.user.Address addresses = 5;
+}
+
+message ProfileRetrieved {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3;
+  bytes result = 4;
+  aggregates.user.Profile profile = 5;
+}

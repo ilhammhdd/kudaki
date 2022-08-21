@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/dialogImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <EditText
+            android:id="@+id/dialogName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Nama Produk"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:theme="@style/FormEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialogImage" />
+
+        <EditText
+            android:id="@+id/dialogPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:hint="Harga"
+            android:inputType="number"
+            android:singleLine="true"
+            android:theme="@style/FormEditText"
+            app:layout_constraintEnd_toEndOf="@+id/dialogName"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/dialogName" />
+
+        <EditText
+            android:id="@+id/dialogDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="top"
+            android:hint="Deskripsi Produk"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:theme="@style/FormEditText"
+            app:layout_constraintEnd_toEndOf="@+id/dialogPrice"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/dialogPrice" />
+
+        <EditText
+            android:id="@+id/dialogWeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Berat"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:theme="@style/FormEditText"
+            app:layout_constraintEnd_toEndOf="@+id/dialogDesc"
+            app:layout_constraintStart_toStartOf="@+id/dialogDesc"
+            app:layout_constraintTop_toBottomOf="@+id/dialogDesc" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/dialogPrice"
+            app:layout_constraintStart_toStartOf="@+id/dialogName"
+            app:layout_constraintTop_toTopOf="@+id/dialogPrice" />
+
+        <Button
+            android:id="@+id/dialogBtnSubmit"
+            style="@style/PrimaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Tambah Alat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/dialogWeight"
+            app:layout_constraintStart_toStartOf="@+id/dialogWeight"
+            app:layout_constraintTop_toBottomOf="@+id/dialogWeight" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

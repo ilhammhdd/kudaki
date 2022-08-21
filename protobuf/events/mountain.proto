@@ -1,0 +1,243 @@
+syntax = "proto3";
+package events;
+
+import "aggregates/mountain/mountain.proto";
+import "aggregates/mountain/recommended_gear.proto";
+import "aggregates/mountain/recommended_gear_item.proto";
+import "events/status.proto";
+import "aggregates/user/user.proto";
+
+/* 
+  recommendation service commands
+*/
+enum RecommendationServiceCommandTopic {
+  ADD_RECOMMENDED_GEAR = 0;
+  DELETE_RECOMMENDED_GEAR = 1;
+  RETRIEVE_RECOMMENDED_GEARS = 2;
+  RETRIEVE_RECOMMENDED_GEAR_ITEMS = 3;
+  ADD_RECOMMENDED_GEAR_ITEM = 4;
+  DELETE_RECOMMENDED_GEAR_ITEM = 5;
+  UPVOTE_RECOMMENDED_GEAR = 6;
+  DOWNVOTE_RECOMMENDED_GEAR = 7;
+}
+
+message DataRecommendedGearItems {
+  string item_type = 1;
+  int32 total = 2;
+}
+
+message AddRecommendedGear {
+  string uid = 1;
+  string kudaki_token = 2;
+  string mountain_uuid = 3;
+  repeated DataRecommendedGearItems recommended_gear_items = 4;
+}
+
+message DeleteRecommendedGear {
+  string uid = 1;
+  string kudaki_token = 2;
+  string recommended_gear_uuid = 3;
+}
+
+message RetrieveRecommendedGears {
+  string uid = 1;
+  string kudaki_token = 2;
+  string mountain_uuid = 3;
+  int32 offset = 4;
+  int32 limit = 5;
+  bytes result_schema = 6;
+}
+
+message RetrieveRecommendedGearItems {
+  string uid = 1;
+  string kudaki_token = 2;
+  string recommended_gear_uuid = 3;
+  int32 offset = 4;
+  int32 limit = 5;
+  bytes result_schema = 6;
+}
+
+message AddRecommendedGearItem {
+  string uid = 1;
+  string kudaki_token = 2;
+  string recommended_gear_uuid = 3;
+  string item_type = 4;
+  int32 total = 5;
+}
+
+message DeleteRecommendedGearItem{
+  string uid = 1;
+  string kudaki_token = 2;
+  string recommended_gear_item_uuid = 3;
+}
+
+message UpvoteRecommendedGear {
+  string uid = 1;
+  string kudaki_token = 2;
+  string recommended_gear_uuid = 3;
+}
+
+message DownvoteRecommendedGear {
+  string uid = 1;
+  string kudaki_token = 2;
+  string recommended_gear_uuid = 3;
+}
+
+/* 
+  recommendation service events
+*/
+enum RecommendationServiceEventTopic {
+  RECOMMENDED_GEAR_ADDED = 0;
+  RECOMMENDED_GEAR_DELETED = 1;
+  RECOMMENDED_GEARS_RETRIEVED = 2;
+  RECOMMENDED_GEAR_ITEMS_RETRIEVED = 3;
+  RECOMMENDED_GEAR_UPDATED = 4;
+}
+
+message RecommendedGearAdded {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3;
+  AddRecommendedGear add_recommended_gear = 4;
+  aggregates.mountain.RecommendedGear recommended_gear = 5;
+  repeated aggregates.mountain.RecommendedGearItem recommended_gear_items = 6;
+}
+
+message RecommendedGearDeleted {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3;
+  aggregates.mountain.RecommendedGear recommended_gear = 4;
+  DeleteRecommendedGear delete_recommended_gear = 5;
+}
+
+message RecommendedGearsRetrieved {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3; 
+  RetrieveRecommendedGears retrieve_recommended_gears = 4;
+  bytes result = 5;
+}
+
+message RecommendedGearItemsRetrieved {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3; 
+  RetrieveRecommendedGearItems retrieve_recommended_gear_items = 4;
+  bytes result = 5;
+}
+
+message RecommendedGearUpdated {
+  string uid = 1;
+  event.Status event_status = 3;
+  aggregates.mountain.RecommendedGear recommended_gear_before = 4;
+  aggregates.mountain.RecommendedGear recommended_gear_after = 5;
+}
+
+/* 
+  mountain service commands
+*/
+enum MountainServiceCommandTopic {
+  ADD_MOUNTAIN = 0;
+  UPDATE_MOUNTAIN = 1;
+  DELETE_MOUNTAIN = 2;
+  RETRIEVE_MOUNTAINS = 3;
+  SEARCH_MOUNTAINS = 4;
+}
+
+message AddMountain {
+  string uid = 1;
+  string kudaki_token = 2;
+  string name = 3;
+  float height = 4;
+  double latitude = 5;
+  double longitude = 6;
+  double difficulty = 7;
+  string description = 8;
+}
+
+message UpdateMountain {
+  string uid = 1;
+  string kudaki_token = 2;
+  string name = 3;
+  float height = 4;
+  double latitude = 5;
+  double longitude = 6;
+  double difficulty = 7;
+  string description = 8;
+  string mountain_uuid = 9;
+}
+
+message DeleteMountain {
+  string uid = 1;
+  string kudaki_token = 2; 
+  string mountain_uuid = 3;
+}
+
+message RetrieveMountains {
+  string uid = 1;
+  string kudaki_token = 2;
+  int32 offset = 3;
+  int32 limit = 4; 
+  bytes result_schema = 5;
+}
+
+message SearchMountains {
+  string uid = 1;
+  string kudaki_token = 2;
+  string keyword = 3;
+  int32 offset = 4;
+  int32 limit = 5;
+}
+
+/* 
+  mountain service events
+*/
+enum MountainServiceEventTopic {
+  MOUNTAIN_ADDED = 0;
+  MOUNTAIN_UPDATED = 1;
+  MOUNTAIN_DELETED = 2;
+  MOUNTAINS_RETRIEVED = 3;
+  MOUNTAINS_SEARCHED = 4;
+}
+
+message MountainAdded {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3; 
+  AddMountain add_mountain = 4;
+  aggregates.mountain.Mountain mountain = 5; 
+}
+
+message MountainUpdated {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3; 
+  UpdateMountain update_mountain = 4;
+  aggregates.mountain.Mountain mountain_before = 5; 
+  aggregates.mountain.Mountain mountain_after = 6; 
+}
+
+message MountainDeleted {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3; 
+  DeleteMountain delete_mountain = 4;
+  aggregates.mountain.Mountain mountain = 5;
+}
+
+message MountainsRetrieved {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3; 
+  RetrieveMountains retrieve_mountains = 4;
+  bytes result = 5;
+}
+
+message MountainSearched {
+  string uid = 1;
+  aggregates.user.User requester = 2;
+  event.Status event_status = 3; 
+  SearchMountains search_mountain = 4;
+  repeated aggregates.mountain.Mountain mountains = 6;
+}

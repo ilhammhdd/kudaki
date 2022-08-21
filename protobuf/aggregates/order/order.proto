@@ -1,0 +1,25 @@
+syntax = "proto3";
+package aggregates.order;
+
+import "google/protobuf/timestamp.proto";
+
+enum OrderStatus {
+    PENDING = 0;
+    APPROVED = 1;
+    DISAPPROVED = 2;
+    RENTED = 4;
+    DONE = 5;
+}
+
+message Order {
+    int64 id = 1;
+    string uuid = 2;
+    string cart_uuid = 3;
+    string order_num = 4; // still unsure about the format
+    string address_uuid = 5;
+    OrderStatus status = 6;
+    int32 shipment_fee = 7;
+    bool delivered = 8;
+    google.protobuf.Timestamp created_at = 9;
+    string tenant_uuid = 11;
+}

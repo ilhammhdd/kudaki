@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHome"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home_ID" />
+
+    <item
+        android:id="@+id/navEvent"
+        android:icon="@drawable/event_icon"
+        android:title="@string/event_ID" />
+
+    <item
+        android:id="@+id/navExplore"
+        android:icon="@drawable/explore_icon"
+        android:title="@string/explore_ID" />
+
+    <item
+        android:id="@+id/navRental"
+        android:icon="@drawable/equipment_icon"
+        android:title="@string/renting_ID" />
+
+    <item
+        android:id="@+id/navProfile"
+        android:icon="@drawable/profile_icon"
+        android:title="@string/profile_ID" />
+
+</menu>

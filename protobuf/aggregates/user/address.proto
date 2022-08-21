@@ -1,0 +1,18 @@
+syntax = "proto3";
+package aggregates.user;
+
+import "aggregates/user/profile.proto";
+import "google/protobuf/timestamp.proto";
+
+message Address {
+    int64 id = 1;
+    string uuid = 2;
+    aggregates.user.Profile profile = 3;
+    string full_address = 4;
+    string receiver_name = 5;
+    string receiver_phone_number = 6;
+    string zip_code = 7;
+    float latitude = 11;
+    float longitude = 12;
+    google.protobuf.Timestamp created_at = 13;
+}

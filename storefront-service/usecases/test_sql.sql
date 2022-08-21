@@ -1,0 +1,1 @@
+SELECT (SELECT COUNT(ir_i.id) FROM kudaki_store.item_reviews ir_i JOIN kudaki_store.items i_i ON ir_i.item_uuid = i_i.uuid WHERE i_i.storefront_uuid IN("f4f14c95-2642-4ac1-8cd8-6b7f733251a7")) AS counted_item_reviews, id, uuid, user_uuid, total_item, rating, total_raw_rating, created_at FROM kudaki_store.storefronts WHERE uuid IN("f4f14c95-2642-4ac1-8cd8-6b7f733251a7");

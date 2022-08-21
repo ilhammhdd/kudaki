@@ -1,0 +1,14 @@
+syntax = "proto3";
+package aggregates.user;
+
+import "aggregates/user/user.proto";
+import "google/protobuf/timestamp.proto";
+
+message Profile {
+    int64 id = 1;
+    string uuid = 2;
+    aggregates.user.User user = 3;
+    string full_name = 4;
+    string photo = 5;
+    google.protobuf.Timestamp created_at = 7;
+}

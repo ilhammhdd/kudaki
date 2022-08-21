@@ -1,0 +1,16 @@
+syntax = "proto3";
+package aggregates.mountain;
+
+import "google/protobuf/timestamp.proto";
+
+message Mountain {
+    int32 id = 1;
+    string uuid = 2;
+    string name = 3;
+    float height = 4;
+    double latitude = 5;
+    double longitude = 6;
+    double difficulty = 7;
+    string description = 8;
+    google.protobuf.Timestamp created_at = 9;
+}

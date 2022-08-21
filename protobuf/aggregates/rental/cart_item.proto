@@ -1,0 +1,18 @@
+syntax = "proto3";
+package aggregates.rental;
+
+import "google/protobuf/timestamp.proto";
+import "aggregates/rental/cart.proto";
+
+message CartItem {
+    int64 id = 1;
+    string uuid = 2;
+    aggregates.rental.Cart cart = 3;
+    string item_uuid = 4;
+    int32 total_item = 5;
+    int32 total_price = 6;
+    int32 unit_price = 7;
+    google.protobuf.Timestamp duration_from = 8;
+    google.protobuf.Timestamp duration_to = 9;
+    google.protobuf.Timestamp created_at = 10;
+}

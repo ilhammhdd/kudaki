@@ -1,0 +1,11 @@
+syntax = "proto3";
+package event;
+
+import "google/protobuf/timestamp.proto";
+
+message Status {
+  repeated string messages = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  int32 http_code = 5;
+  repeated string errors = 6;
+}

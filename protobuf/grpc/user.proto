@@ -1,0 +1,35 @@
+syntax = "proto3";
+package rpc;
+
+import "events/status.proto";
+import "aggregates/user/user.proto";
+
+message AuthenticateUser {
+  string uid = 1;
+  string jwt = 2;
+}
+
+message UserAuthenticated {
+  string uid = 1;
+  event.Status event_status = 2;
+  aggregates.user.User user = 3;
+}
+
+message AuthorizeUser {
+  string uid = 1;
+  repeated aggregates.user.UserRole user_roles = 2;
+  string jwt = 3;
+}
+
+message UserAuthorized {
+  string uid = 1;
+  event.Status event_status = 2;
+  aggregates.user.User user = 3;
+}
+
+service User {
+  rpc UserAuthentication(AuthenticateUser)
+      returns (UserAuthenticated);
+  rpc UserAuthorization(AuthorizeUser)
+      returns (UserAuthorized);
+}

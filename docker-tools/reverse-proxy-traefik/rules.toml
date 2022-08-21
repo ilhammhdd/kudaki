@@ -1,0 +1,25 @@
+[[tls]]
+entryPoints = ["https"]
+[tls.certificate]
+certFile = "/certs/gateway.kudaki.id.crt"
+keyFile = "/certs/gateway.kudaki.id.key"
+
+[[tls]]
+entryPoints = ["https"]
+[tls.certificate]
+certFile = "/certs/entry.kudaki.id.crt"
+keyFile = "/certs/entry.kudaki.id.key"
+
+[[tls]]
+entryPoints = ["https"]
+[tls.certificate]
+certFile = "/certs/kudaki.id.crt"
+keyFile = "/certs/kudaki.id.key"
+
+[[tls]]
+entryPoints = ["https"]
+[tls.certificate]
+certFile = "/certs/kibana.kudaki.id.crt"
+keyFile = "/certs/kibana.kudaki.id.key"
+
+

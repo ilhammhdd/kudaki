@@ -1,0 +1,26 @@
+syntax = "proto3";
+package aggregates.kudaki_event;
+
+enum DokuInvoiceStatus {
+    NEW = 0;
+    SUCCESS = 1;
+    FAILED = 2;
+}
+
+message DokuInvoice {
+    int64 id = 1;
+    string uuid = 2;
+    string kudaki_event_uuid = 3;
+    float amount = 4;
+    float purchase_amount = 5;
+    string transaction_id_merchant = 6;
+    string words = 7;
+    int64 request_date_time = 8;
+    int32 currency = 9;
+    int32 purchase_currency = 10;
+    string session_id = 11;
+    string name = 12;
+    string email = 13;
+    string basket = 14;
+    DokuInvoiceStatus doku_invoice_status = 15;
+}

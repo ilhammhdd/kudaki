@@ -1,0 +1,40 @@
+version: "3.3"
+
+services:
+  kudaki_mysql_service:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    hostname: kudaki_mysql_host
+    container_name: kudaki_mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD : mysqlrocks
+    volumes:
+      - /home/kudaki-data/mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_mysql_service
+    restart: always
+
+  kudaki_mysql_replica_service:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    hostname: kudaki_mysql_replica_host
+    container_name: kudaki_mysql_replica_container
+    environment:
+      MYSQL_ROOT_PASSWORD : mysqlreplicarocks
+    volumes:
+      - /home/kudaki-data/mysql-replica-data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      kudaki-docker-net:
+        aliases:
+          - kudaki_mysql_replica_service
+    restart: always
+
+networks:
+  kudaki-docker-net:
+    external: true
